@@ -7,11 +7,11 @@ import {
   removeFromHistory,
 } from '../lib/historyUtils';
 
-let Context = null;
+const contextFactory = {};
 
 // to be updated
 // params, errorpage
-// notFound
+// notFound interface
 // both of hoc style, containment style
 // fragment performance
 // algorithm performance
@@ -19,9 +19,19 @@ let Context = null;
 
 // let movePage = undefined;
 
-function root(WrappedComponent, { useContext = false, baseUrl = '/' }) {
+function getContext(name = 'defaultRouter') {
+  return contextFactory[name];
+}
+
+function root(
+  WrappedComponent,
+  { useContext = false, baseUrl = '/', name = 'defaultRouter' },
+) {
   if (useContext === true) {
-    Context = React.createContext('');
+    if (name in contextFactory) {
+      throw new Error(`The context name '${name}' is duplicated.`);
+    }
+    contextFactory[name] = React.createContext('');
   }
 
   return class extends Component {
@@ -181,4 +191,4 @@ class Link extends Component {
   }
 }
 
-export { root as default, segment, Context };
+export { root as default, segment, getContext };
