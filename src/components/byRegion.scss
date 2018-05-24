@@ -1,4 +1,65 @@
 .byRegion {
-  background-color: #cccccc;
+  // background-color: #eeeeee;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 60px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgb(222, 222, 222);
+}
+
+.header > *:not(:last-child) {
+  flex-basis: 120px;
+  // color: red;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0 1rem 0 1rem;
+  text-align: center;
+}
+
+.header > *:last-child {
   flex: 1;
+  text-align: right;
+  margin: 0 1rem 0 1rem;
+}
+
+.header button {
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.container .list {
+  // position: absolute;
+  flex: 1;
+  overflow: scroll;
+}
+
+.container .map {
+  // flex:/ 4;
+  width: 100%;
+  height: 100%;
+}
+
+.container .resizable {
+  position: absolute;
+  height: 100%;
+  // flex: 4;
+  // display: flex;
+  border-left: 3px dotted #aaaaaa;
+}
+
+button {
+  border: 1px solid #888888;
+  border-radius: 4px;
 }

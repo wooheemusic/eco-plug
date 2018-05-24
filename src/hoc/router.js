@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { pathMatch, relativeMatch } from '../lib/pathMatcher';
 import {
   pushState,
-  updateState,
+  replaceState,
   getFromHistory,
   removeFromHistory,
 } from '../lib/historyUtils';
@@ -16,6 +16,8 @@ const contextFactory = {};
 // fragment performance
 // algorithm performance
 // pathMatcher option
+// multiPath, exactPath
+// relative should be default!!!!
 
 // let movePage = undefined;
 
@@ -25,7 +27,7 @@ function getContext(name = 'defaultRouter') {
 
 function root(
   WrappedComponent,
-  { useContext = false, baseUrl = '/', name = 'defaultRouter' },
+  { useContext = false, baseUrl = '', name = 'defaultRouter' } = {},
 ) {
   if (useContext === true) {
     if (name in contextFactory) {
@@ -38,14 +40,19 @@ function root(
     constructor(props) {
       super(props);
 
+      this.baseUrl = baseUrl.endsWith('/')
+        ? baseUrl.slice(0, baseUrl.length - 1)
+        : baseUrl; // 'replace(/\/$/,'')' performs much worse than this.
+
       this.state = {
         path: this.getPath(),
+        isPushing: false,
       };
 
       this.movePage = this.movePage.bind(this);
 
       window.addEventListener('popstate', () => {
-        this.setState({ path: this.getPath() });
+        this.setState({ path: this.getPath(), isPushing: false });
       });
     }
 
@@ -54,16 +61,22 @@ function root(
       return `${pathname}${hash}${search}`;
     }
 
-    movePage(path) {
-      if (path.startsWith('/')) {
-        this.setState({ path });
-      } else {
-        this.setState({ path: `/${path}` });
+    movePage(path, isPushing = true) {
+      path = path.startsWith('/')
+        ? this.baseUrl + path
+        : `${this.baseUrl}/${path}`;
+      if (path !== this.state.path) {
+        this.setState({ path, isPushing });
       }
     }
 
     syncHistoryToState() {
-      pushState(this.state.path);
+      console.log('syncHistoryToState', this.state);
+      if (this.state.isPushing) {
+        pushState(this.state.path);
+      } else {
+        replaceState(this.state.path);
+      }
     }
 
     render() {
@@ -72,8 +85,7 @@ function root(
         <WrappedComponent
           movePage={this.movePage}
           currentPath={this.state.path}
-          basePath=""
-          relativePath={this.state.path}
+          basePath={baseUrl}
           {...this.props}
         />
       );
@@ -93,7 +105,12 @@ function segment(WrappedComponent, mapping) {
 
     render() {
       const {
-        path, currentPath, isRelative, basePath, ...rest
+        path,
+        currentPath,
+        isRelative = true,
+        basePath,
+        exact = false,
+        ...rest
       } = this.props;
 
       // currentPath /bbb/aaa/123/ccc/ddd
@@ -106,9 +123,9 @@ function segment(WrappedComponent, mapping) {
       // to /bbb/aaa/{id}/ccc
 
       // last '/' to ''
-
+      // console.log(currentPath, path, isRelative, basePath);
       if (isRelative) {
-        const result = relativeMatch(currentPath, basePath, path);
+        const result = relativeMatch(currentPath, basePath, path, exact);
         if (result) {
           return (
             <WrappedComponent
@@ -151,6 +168,14 @@ function segment(WrappedComponent, mapping) {
 //   }
 // }
 
+class NotFound extends Component {
+  render() {
+    const { children } = this.props;
+    console.log('sdcscscsc', children);
+    return <div {...this.props}>{children}</div>;
+  }
+}
+
 class Link extends Component {
   constructor(props) {
     super(props);
@@ -175,7 +200,13 @@ class Link extends Component {
 
   render() {
     const {
-      path, children, tabIndex, movePage, ...rest
+      path,
+      children,
+      tabIndex,
+      movePage,
+      currentPath,
+      basePath,
+      ...rest
     } = this.props;
     return (
       <div
@@ -191,4 +222,4 @@ class Link extends Component {
   }
 }
 
-export { root as default, segment, getContext };
+export { root, segment, getContext, Link, NotFound };

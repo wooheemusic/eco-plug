@@ -5,10 +5,11 @@ function pushState(path, ...objects) {
   window.history.pushState(Object.assign({}, ...objects), null, path);
 }
 
-function updateState(...objects) {
-  const { state = {} } = window.history;
-  Object.assign(state, ...objects);
-  window.history.replaceState(state, null, window.location.href);
+function replaceState(path, ...objects) {
+  const { state } = window.history;
+  const newState = state || {};
+  Object.assign(newState, ...objects);
+  window.history.replaceState(newState, null, path || window.location.href);
 }
 
 // get('username', 'password');
@@ -32,4 +33,4 @@ function removeFromHistory(...keys) {
   }
 }
 
-export { pushState, updateState, getFromHistory, removeFromHistory };
+export { pushState, replaceState, getFromHistory, removeFromHistory };

@@ -131,12 +131,14 @@ function pathMatch(url, urlMapping) {
   }
   return result; // returns null if not match
 }
-function relativeMatch(url, base, mapping) {
-  const adjustedPath = (
-    (mapping.startsWidth('/') ? '' : '/') + mapping
-  ).replace(/\/$/, '');
+function relativeMatch(url, base, mapping, exact = false) {
+  // console.log(url, '.', base, '.', mapping);
+  let adjustedPath = (mapping.startsWith('/') ? '' : '/') + mapping;
+  adjustedPath = exact ? adjustedPath : adjustedPath.replace(/\/$/, '');
   const newBasePath = base + adjustedPath;
-  const numOfSlashes = newBasePath.match(/\//g).length;
+  // console.log(newBasePath);
+  const newBasePathMatch = newBasePath.match(/\//g);
+  const numOfSlashes = newBasePathMatch ? newBasePathMatch.length : 0;
   const l = url.length;
   let indexOfNth = -1;
   let hit = 0;
@@ -149,9 +151,21 @@ function relativeMatch(url, base, mapping) {
       }
     }
   }
-  const projectedCurrentPath = indexOfNth !== -1 ? url.slice(indexOfNth) : url;
+  // console.log('xxqddqdwqdqwd', newBasePath, url, numOfSlashes, indexOfNth);
+  if (
+    exact &&
+    ((newBasePath !== '' && indexOfNth !== -1) ||
+      (newBasePath === '' && url !== '/'))
+  ) {
+    return null;
+  }
+  const projectedCurrentPath =
+    indexOfNth !== -1 ? url.slice(0, indexOfNth) : url;
+  // console.log('projectedCurrentPath', projectedCurrentPath);
   const result = pathMatch(projectedCurrentPath, newBasePath);
-  result.basePath = projectedCurrentPath;
+  if (result) {
+    result.basePath = projectedCurrentPath;
+  }
   return result;
 }
 

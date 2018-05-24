@@ -1,9 +1,9 @@
 .spinner {
-  display: block;
-  width: 4rem;
-  height: 4rem;
-  margin: auto;
-  opacity: 0.5;
+  // display: block;
+  // flex: 1;
+  width: 8rem;
+  height: 8rem;
+  // margin: auto;
   animation: spin 2.3s linear infinite;
 }
 
@@ -11,7 +11,7 @@
   /* stroke: rgba(0, 49, 83,0.5); */
   stroke: rgba(200, 120, 0, 0.5);
   fill: transparent;
-  stroke-width: 13%;
+  stroke-width: 8%;
   stroke-dasharray: 252%;
   stroke-dashoffset: 0;
   animation: larva 1s linear infinite;

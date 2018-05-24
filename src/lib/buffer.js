@@ -70,3 +70,46 @@ export function buffer(
     }
   }
 }
+
+export function tryUntilSuccess(
+  check,
+  onSuccess,
+  onFail,
+  duration = 10,
+  max = 10,
+  trial = 0,
+) {
+  trial++;
+  if (check()) {
+    onSuccess();
+    return;
+  }
+  if (trial < max) {
+    setTimeout(
+      tryUntilSuccess,
+      duration,
+      check,
+      onSuccess,
+      onFail,
+      duration,
+      max,
+      trial,
+    );
+  } else {
+    onFail();
+  }
+}
+
+export function returnPromise(callback, latency = 0) {
+  return new Promise((resolve) => {
+    // console.log('xxxxxxxxxxx', latency);
+    if (latency >= 0) {
+      setTimeout(() => {
+        // console.log('yyyyyyyyyy');
+        resolve(callback());
+      }, latency);
+    } else {
+      resolve(callback());
+    }
+  });
+}

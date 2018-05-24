@@ -95,6 +95,7 @@
   "devDependencies": {
     "node-sass": "^4.9.0",
     "prettier-eslint": "^8.8.1",
+    "re-resizable": "^4.4.8",
     "sass-loader": "^7.0.1"
   }
 }

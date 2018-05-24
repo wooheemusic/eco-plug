@@ -1,18 +1,20 @@
 import React, { PureComponent } from 'react';
+import merge from '../lib/classnames';
 import style from './loading.scss';
-import Spinner from '../components/spinner';
 
-function loading({
-  component: PureComponentDeferred,
-  loadingComponent: LoadingComponent = Spinner,
-  startDuration = 300,
-  endDuration = startDuration,
-}) {
+export default function loading(
+  PureComponentDeferred,
+  LoadingComponent,
+  {
+    startDuration = 1000,
+    endDuration = 100, // startDuration,
+    loadingClassName = '',
+    loadingStyle,
+  } = {},
+) {
   return class Loader extends PureComponent {
     constructor(props) {
       super(props);
-
-      this.initClassName = props.className;
 
       this.state = {
         isLoading: props.isLoading,
@@ -20,14 +22,26 @@ function loading({
         unmounted: false,
       };
 
-      this.startStlye = {};
+      this.unmount = this.unmount.bind(this);
     }
 
-    getDerivedStateFromProps(nextProps, prevState) {
+    static getDerivedStateFromProps(nextProps, prevState) {
       const isLoading = nextProps.isLoading || false;
+      // console.log(
+      //   'xxxxx',
+      //   isLoading,
+      //   prevState === true && isLoading === false,
+      //   isLoading === true ? false : prevState.unmounted,
+      // );
+      // console.log(
+      //   'yyyyyyy',
+      //   isLoading,
+      //   prevState.isLoading === true && isLoading === false,
+      //   isLoading === true ? false : prevState.unmounted,
+      // );
       return {
         isLoading,
-        ending: prevState === true && isLoading === false,
+        ending: prevState.isLoading === true && isLoading === false,
         unmounted: isLoading === true ? false : prevState.unmounted,
       };
     }
@@ -64,35 +78,44 @@ function loading({
 
     getClassName() {
       return this.state.isLoading
-        ? `${this.initClassName} ${style.loading} ${style.visible}`
-        : `${this.initClassName} ${style.loading}`;
+        ? merge(loadingClassName, style.loading, style.visible)
+        : merge(loadingClassName, style.loading);
     }
 
-    getTransition() {
-      const transition = `opaciy ${
-        this.state.isLoading === true ? startDuration : endDuration
-      }s`;
-      return {
-        WebkitTransition: transition, // note the capital 'W' here
-        msTransition: transition, // 'ms' is the only lowercase vendor pref
-        transition,
-      };
-    }
+    // getTransition() {
+    //   const transition = `opaciy ${
+    //     this.state.isLoading === true ? startDuration : endDuration
+    //   }s`;
+    //   return {
+    //     WebkitTransition: transition, // note the capital 'W' here
+    //     msTransition: transition, // 'ms' is the only lowercase vendor pref
+    //     transition,
+    //   };
+    // }
 
     render() {
       const { isLoading, unmounted, ending } = this.state;
+      const { isLoading: x, ...rest } = this.props;
       if (ending === true) {
         setTimeout(this.unmount, endDuration);
       }
+      // console.log(
+      //   'xxxxxxxxxxxxxx',
+      //   isLoading,
+      //   ending,
+      //   unmounted,
+      //   this.getClassName(),
+      //   this.props,
+      // );
       return (
-        <div>
-          <PureComponentDeferred {...this.props} />
-          {unmounted === false ? (
-            <div className={this.getClassName()} style={this.getTransition()}>
+        <React.Fragment>
+          <PureComponentDeferred {...rest} />
+          {LoadingComponent && unmounted === false ? (
+            <div className={this.getClassName()} style={loadingStyle}>
               <LoadingComponent />
             </div>
           ) : null}
-        </div>
+        </React.Fragment>
       );
     }
   };

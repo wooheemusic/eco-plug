@@ -1,40 +1,29 @@
 import React, { Component } from 'react';
 import './global.css';
 import style from './App.scss';
-import Nav from './components/nav';
-import Container from './components/container';
-import { pathMatch } from './lib/pathMatcher';
-// import Ap from './components/test1';
-// import Bp from './components/test2';
+import _Nav from './components/nav';
+import _Container from './components/container';
+import { segment } from './hoc/router';
 
-const url = 'username/qwd/';
-const mapping = '/username/{id}/**/';
-console.log(pathMatch(url, mapping));
+// test
+import { pathMatch } from './lib/pathMatcher';
+
+// const url = 'username/qwd/';
+// const mapping = '/username/{id}/**/';
+// console.log('pathMatcherTest', pathMatch(url, mapping));
+
+const Nav = _Nav;
+const Container = _Container;
+// const Container = segment(_Container);
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { movePage: this.pageMove.bind(this) };
-
-    // window.location.hash = '';
-    // window.location.search = '';
-    console.log(window.location);
-    // window.addEventListener()
-  }
-
-  pageMove(path) {
-    this.setState({ pageName: path });
-  }
-
   render() {
+    console.log('App props', this.props);
     return (
       <div className={style.app}>
-        <Nav {...this.state} />
-        <Container {...this.state} />
-        {/* <Ap>
-          <Bp scope="s" />
-        </Ap> */}
+        <Nav {...this.props} />
+        <Container path="aaa" {...this.props} />
+        {/* <Container path="/info/**" {...this.props} /> */}
       </div>
     );
   }

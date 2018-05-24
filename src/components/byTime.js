@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
 import style from './byTime.scss';
+import merge from '../lib/classnames';
 import mockDB from '../database/mockDB';
-import { xxx, set } from './test';
 
-console.log('22222');
 export default class ByTime extends PureComponent {
   constructor(props) {
     super(props);
@@ -12,8 +11,14 @@ export default class ByTime extends PureComponent {
   }
 
   render() {
-    set(222);
-    console.log(xxx, set);
-    return <div className={style.byTime}>ByTime</div>;
+    console.log('ByTime', this.props);
+    const {
+      className, currentPath, basePath, movePage, ...rest
+    } = this.props;
+    return (
+      <div className={merge(className, style.byTime)} {...rest}>
+        ByTime{this.props.info}
+      </div>
+    );
   }
 }

@@ -1,0 +1,272 @@
+[
+  {
+    "id": "5b0510ad522bc3f23a5179ae",
+    "lat": 37.569772,
+    "lng": 126.991111,
+    "address": "162 Dahl Court, Villarreal, District Of Columbia, 6158",
+    "onfire": false,
+    "available": true,
+    "battery": 2
+  },
+  {
+    "id": "5b0510ade71d8449a004a2f1",
+    "lat": 37.570424,
+    "lng": 126.991742,
+    "address": "586 Flatlands Avenue, Trail, Marshall Islands, 2570",
+    "onfire": false,
+    "available": true,
+    "battery": 56
+  },
+  {
+    "id": "5b0510ad6feb866689fb6c89",
+    "lat": 37.576307,
+    "lng": 126.989578,
+    "address": "417 Colonial Road, Kerby, Minnesota, 3458",
+    "onfire": false,
+    "available": true,
+    "battery": 3
+  },
+  {
+    "id": "5b0510ad194dd5b5d2177cf3",
+    "lat": 37.55797,
+    "lng": 126.986265,
+    "address": "277 Fillmore Avenue, Klondike, American Samoa, 5746",
+    "onfire": false,
+    "available": false,
+    "battery": 14
+  },
+  {
+    "id": "5b0510adfe1c755472b56a09",
+    "lat": 37.559591,
+    "lng": 126.988458,
+    "address": "438 Vandervoort Avenue, Kula, Ohio, 6517",
+    "onfire": false,
+    "available": false,
+    "battery": 29
+  },
+  {
+    "id": "5b0510adf976a4f008ce21e8",
+    "lat": 37.565073,
+    "lng": 126.989153,
+    "address": "358 Crooke Avenue, Kiskimere, Kansas, 448",
+    "onfire": false,
+    "available": true,
+    "battery": 64
+  },
+  {
+    "id": "5b0510ad9bd1ce7206207649",
+    "lat": 37.566825,
+    "lng": 126.989764,
+    "address": "236 Kimball Street, Hillsboro, Nebraska, 7395",
+    "onfire": false,
+    "available": true,
+    "battery": 29
+  },
+  {
+    "id": "5b0510ad2954e87dcea8b535",
+    "lat": 37.576696,
+    "lng": 126.979565,
+    "address": "175 Carroll Street, Lowell, Guam, 5734",
+    "onfire": false,
+    "available": true,
+    "battery": 18
+  },
+  {
+    "id": "5b0510ad296980c822e7e5a3",
+    "lat": 37.561758,
+    "lng": 126.982089,
+    "address": "281 Cranberry Street, Yogaville, Oregon, 9341",
+    "onfire": false,
+    "available": false,
+    "battery": 23
+  },
+  {
+    "id": "5b0510ade1d0533eb0fcd052",
+    "lat": 37.563892,
+    "lng": 126.989424,
+    "address": "191 Noll Street, Williamson, Virginia, 6958",
+    "onfire": false,
+    "available": true,
+    "battery": 97
+  },
+  {
+    "id": "5b0510ad6f09271d9c695ce4",
+    "lat": 37.573952,
+    "lng": 126.975308,
+    "address": "236 Kenilworth Place, Bedias, Alabama, 3630",
+    "onfire": false,
+    "available": true,
+    "battery": 11
+  },
+  {
+    "id": "5b0510adc6eaa275ddfb6766",
+    "lat": 37.56184,
+    "lng": 126.987362,
+    "address": "737 Royce Street, Maxville, Maine, 4273",
+    "onfire": false,
+    "available": false,
+    "battery": 83
+  },
+  {
+    "id": "5b0510ad989e8550928c8f1a",
+    "lat": 37.569966,
+    "lng": 126.98964,
+    "address": "577 Vandervoort Place, Greenbackville, Georgia, 5101",
+    "onfire": false,
+    "available": false,
+    "battery": 37
+  },
+  {
+    "id": "5b0510adfe4e4f08f7892e06",
+    "lat": 37.575429,
+    "lng": 126.982909,
+    "address": "461 Crosby Avenue, Brady, North Dakota, 9915",
+    "onfire": false,
+    "available": false,
+    "battery": 85
+  },
+  {
+    "id": "5b0510adf15536f48cf67679",
+    "lat": 37.57609,
+    "lng": 126.994867,
+    "address": "508 Jerome Street, Epworth, New Mexico, 4071",
+    "onfire": false,
+    "available": false,
+    "battery": 80
+  },
+  {
+    "id": "5b0510adf3b52192f3517e4d",
+    "lat": 37.572438,
+    "lng": 126.994503,
+    "address": "751 River Street, Levant, Virgin Islands, 6806",
+    "onfire": false,
+    "available": true,
+    "battery": 60
+  },
+  {
+    "id": "5b0510adb671d794037af45c",
+    "lat": 37.559408,
+    "lng": 126.994026,
+    "address": "543 Maujer Street, Falmouth, Wyoming, 8061",
+    "onfire": false,
+    "available": true,
+    "battery": 89
+  },
+  {
+    "id": "5b0510ad4b0d588d1f59865d",
+    "lat": 37.567003,
+    "lng": 126.981734,
+    "address": "713 Front Street, Virgie, West Virginia, 7094",
+    "onfire": false,
+    "available": false,
+    "battery": 28
+  },
+  {
+    "id": "5b0510adce7fe59ddc028d77",
+    "lat": 37.561878,
+    "lng": 126.976003,
+    "address": "233 Hoyt Street, Neahkahnie, Delaware, 4822",
+    "onfire": false,
+    "available": false,
+    "battery": 63
+  },
+  {
+    "id": "5b0510adca567b2daec98b72",
+    "lat": 37.556746,
+    "lng": 126.984517,
+    "address": "455 Tudor Terrace, Mansfield, Arizona, 1580",
+    "onfire": false,
+    "available": false,
+    "battery": 95
+  },
+  {
+    "id": "5b0510ad52aa2ae19f04b145",
+    "lat": 37.567627,
+    "lng": 126.988203,
+    "address": "605 Krier Place, Nogal, New York, 2905",
+    "onfire": false,
+    "available": true,
+    "battery": 50
+  },
+  {
+    "id": "5b0510ade2bc48e28b6b0d5c",
+    "lat": 37.574788,
+    "lng": 126.981367,
+    "address": "389 Cheever Place, Forestburg, Michigan, 9722",
+    "onfire": false,
+    "available": true,
+    "battery": 42
+  },
+  {
+    "id": "5b0510ad8524cba60730cab9",
+    "lat": 37.564165,
+    "lng": 126.992454,
+    "address": "796 Sullivan Street, Ypsilanti, Kentucky, 9485",
+    "onfire": false,
+    "available": false,
+    "battery": 95
+  },
+  {
+    "id": "5b0510add981c724185852ce",
+    "lat": 37.55899,
+    "lng": 126.981544,
+    "address": "266 Senator Street, Brenton, Nevada, 4865",
+    "onfire": false,
+    "available": true,
+    "battery": 62
+  },
+  {
+    "id": "5b0510ad9329094b4f99c9b8",
+    "lat": 37.568984,
+    "lng": 126.986162,
+    "address": "793 Lincoln Avenue, Brewster, North Carolina, 3542",
+    "onfire": false,
+    "available": false,
+    "battery": 69
+  },
+  {
+    "id": "5b0510adb6562d49821e5823",
+    "lat": 37.572488,
+    "lng": 126.993457,
+    "address": "409 Livingston Street, Lindisfarne, South Dakota, 3401",
+    "onfire": false,
+    "available": false,
+    "battery": 90
+  },
+  {
+    "id": "5b0510ad21105d123965a815",
+    "lat": 37.55966,
+    "lng": 126.982749,
+    "address": "843 Woodbine Street, Elizaville, South Carolina, 8401",
+    "onfire": false,
+    "available": true,
+    "battery": 21
+  },
+  {
+    "id": "5b0510ad5ea217b4adcdeec0",
+    "lat": 37.560966,
+    "lng": 126.986601,
+    "address": "603 Moore Place, Roosevelt, Connecticut, 4539",
+    "onfire": false,
+    "available": false,
+    "battery": 68
+  },
+  {
+    "id": "5b0510ad23cfbc9d316e3661",
+    "lat": 37.563659,
+    "lng": 126.975818,
+    "address": "919 Bainbridge Street, Rosburg, Florida, 3931",
+    "onfire": false,
+    "available": true,
+    "battery": 30
+  },
+  {
+    "id": "5b0510ad04d36e3927a884da",
+    "lat": 37.573492,
+    "lng": 126.99386,
+    "address": "363 Stoddard Place, Florence, Tennessee, 7725",
+    "onfire": false,
+    "available": false,
+    "battery": 95
+  }
+]
