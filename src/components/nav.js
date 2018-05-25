@@ -16,7 +16,7 @@ export default class Nav extends PureComponent {
   }
 
   render() {
-    console.log('Nav props', this.props);
+    console.log('Nav render props', this.props);
     const { currentPath, basePath } = this.props;
     return (
       <nav className={style.nav}>
@@ -53,7 +53,32 @@ export default class Nav extends PureComponent {
             path="/byTime"
           />
         </Link>
-        <div className={style.userInfo}>wooheemusic@osci.com</div>
+        <div className={style.rest}>
+          <div className={style.userInfo}>
+            <div className={style.description}>
+              <div className={style.role}>Eco Plug administrator</div>
+              <div className={style.email}>wooheemusic@osci.kr</div>
+            </div>
+            <div className={style.dropDownButton} role="button" tabIndex={0}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path d="M7 10l5 5 5-5z" />
+                <path d="M0 0h24v24H0z" fill="none" />
+              </svg>
+              <div className={style.dropDown}>
+                <div>
+                  (...oooops)
+                  <div className={style.divider} />
+                  sorry... <br />not implemented
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </nav>
     );
   }

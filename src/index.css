@@ -1,5 +1,22 @@
-body {
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  height: 100%;
+}
+
+#root *:focus {
+  outline: 1px dashed orange;
+  box-sizing: border-box;
+  /* // color: #333333;
+  // font-weight: bold;
+  // outline: none; */
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
 }

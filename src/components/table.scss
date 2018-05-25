@@ -1,8 +1,86 @@
-.table {
-  table-layout: fixed;
+.tableContainer {
+  // width: 800px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.table td {
+.tableWrap {
+  flex: 1;
+  table-layout: fixed;
+  overflow: scroll;
+  // height: 100px;
+}
+
+.tableWrap > table {
+  width: 800px;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.tableWrap > table > thead {
+  vertical-align: middle;
+}
+
+.tableWrap > table > thead > th {
+  font-weight: bold;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.tableWrap > table th,
+.tableWrap > table td {
   overflow: hidden;
   white-space: nowrap;
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+// .tableWrap > table td.right {
+//   text-align: right;
+// }
+
+// .tableWrap > table td.center {
+//   text-align: center;
+// }
+
+.tableWrap > table > tbody > tr:nth-child(odd) {
+  background-color: rgb(249, 249, 249);
+}
+
+.modal {
+  // display: none;
+  // flex: 1;
+  // overflow: auto;
+
+  max-height: 0;
+  transition: max-height 250ms linear; //cubic-bezier(0.4, 0, 0.6, 1);
+}
+.modal.show {
+  // display: none;
+  // flex: 1;
+  // overflow: auto;
+  max-height: 700px;
+  transition: max-height 250ms linear; //cubic-bezier(0, 0, 0.2, 1);
+}
+
+.gage {
+  // margin-left: 0.5rem;
+}
+
+.fire {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.dot {
+  width: 1rem;
+  height: 1rem;
+}
+
+.ok {
+  color: rgb(142, 179, 102);
+}
+.notOk {
+  color: rgb(207, 84, 45);
 }

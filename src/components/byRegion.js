@@ -5,12 +5,19 @@ import style from './byRegion.scss';
 import mockDB from '../database/mockDB';
 import Map from './map';
 import Table from './table';
+import Tabs from './tabs';
 
 export default class ByRegion extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      filterIndex: 0,
+    };
+
+    this.setFilter = this.setFilter.bind(this);
+    this.setFilterByEnter = this.setFilterByEnter.bind(this);
+
     this.mapRef = {};
     this.log = this.log.bind(this);
   }
@@ -24,6 +31,17 @@ export default class ByRegion extends PureComponent {
     }
   }
 
+  setFilter(filterIndex) {
+    this.setState({ filterIndex });
+  }
+
+  setFilterByEnter(e, filterIndex) {
+    // console.log(e.keyCode);
+    if (e.keyCode === 13) {
+      this.setFilter(filterIndex);
+    }
+  }
+
   // componentDidMount(){
   //   if(this.props.data){
 
@@ -31,38 +49,68 @@ export default class ByRegion extends PureComponent {
   // }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log('ByRegion componentDidUpdate');
     if (!prevProps.data && this.props.data) {
       this.resizable.updateSize({ width: '60%' });
     }
   }
 
   render() {
-    console.log('ByRegion props', this.props);
+    console.log('ByRegion render props', this.props);
     const {
       className,
       path,
       currentPath,
       basePath,
       movePage,
-      data,
+      data = [],
       ...rest
     } = this.props;
-    console.log(data);
+    // console.log(data);
+
+    function sortFire(arr) {
+      arr.sort(function (a, b) {
+        return b.onfire - a.onfire;
+      });
+    }
+
+    const { filterIndex } = this.state;
+    let filteredData;
+    if (filterIndex === 1) {
+      filteredData = data.filter(v => v.onfire);
+    } else if (filterIndex === 2) {
+      sortFire((filteredData = data.filter(v => !v.available)));
+    } else {
+      sortFire((filteredData = data));
+    }
+
     return (
       <div className={merge(className, style.byRegion)} {...rest}>
         <div className={style.header}>
-          <div>By Region</div>{' '}
+          <div>By Region</div>
           <div>
-            <button onClick={this.log}>log</button>
-            <button onClick={this.log}>log</button>
-            <button onClick={this.log}>log</button>
-            <button onClick={this.log}>log</button>
+            <button onClick={this.log}>item 1</button>
+            <button className={style.selected} onClick={this.log}>
+              item 2
+            </button>
+            <button onClick={this.log}>item 3</button>
+            <button onClick={this.log}>item 4</button>
           </div>
         </div>
 
         <div className={style.container}>
           <React.Fragment key="1232">
-            <Table className={style.list} data={data} />
+            <div className={style.list}>
+              <div className={style.tabsShadow}>-</div>
+              <Tabs
+                className={style.tabs}
+                data={filteredData}
+                filterIndex={filterIndex}
+                setFilter={this.setFilter}
+                setFilterByEnter={this.setFilterByEnter}
+              />
+              <Table className={style.table} data={filteredData} />
+            </div>
           </React.Fragment>
           <React.Fragment key="123">
             <Resizable
@@ -87,7 +135,7 @@ export default class ByRegion extends PureComponent {
             >
               <Map
                 className={style.map}
-                data={data}
+                data={filteredData}
                 mapRef={this.mapRef}
                 // currentPath={currentPath}
                 // basePath={basePath}

@@ -26,7 +26,7 @@ const ByTime = segment(dataBind(_ByTime, props => getAll(), Spinner, {
 
 export default class Container extends Component {
   render() {
-    console.log('Container props', this.props);
+    console.log('Container render props', this.props);
 
     const { className, path, ...rest } = this.props;
     return (

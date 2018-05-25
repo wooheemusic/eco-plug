@@ -517,7 +517,7 @@
     "lat": 37.505135,
     "lng": 126.896143,
     "address": "583 Mersereau Court, Joppa, West Virginia, 8718",
-    "onfire": false,
+    "onfire": true,
     "available": false,
     "battery": 27
   },

@@ -38,10 +38,10 @@ export default function dataBind(
     // });
 
     static getDerivedStateFromProps(nextProps, prevState) {
-      console.log('getDerivedStateFromProps', nextProps, prevState, this);
+      // console.log('getDerivedStateFromProps', nextProps, prevState, this);
       // modification check here later
       const data = selectData(nextProps);
-      console.log('data', data);
+      // console.log('data', data);
       if (data instanceof Promise) {
         return { isLoading: true, promise: data };
       }
@@ -49,7 +49,7 @@ export default function dataBind(
     }
 
     render() {
-      console.log('dataBind render this.state', this.state);
+      // console.log('dataBind render this.state', this.state);
       const { isLoading, promise, data } = this.state;
       if (isLoading) {
         promise.then((_data) => {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './global.css';
 import style from './App.scss';
 import _Nav from './components/nav';
 import _Container from './components/container';
@@ -18,7 +17,7 @@ const Container = _Container;
 
 class App extends Component {
   render() {
-    console.log('App props', this.props);
+    console.log('App render props', this.props);
     return (
       <div className={style.app}>
         <Nav {...this.props} />
