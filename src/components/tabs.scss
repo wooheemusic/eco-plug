@@ -1,0 +1,25 @@
+.tabs {
+  display: flex;
+  // flex-direction: row;
+  align-items: center;
+  background-color: rgb(233, 233, 233);
+}
+
+.tab {
+  height: 100%;
+  flex-basis: 150px;
+  // text-align: center;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab.current {
+  border: 1px solid;
+  background-color: white;
+  border-color: rgb(204, 204, 204) rgb(204, 204, 204) #fff;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  font-weight: bold;
+}

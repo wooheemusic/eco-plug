@@ -1,0 +1,42 @@
+.modal {
+  box-shadow: 0 -0.1rem 0.1rem 0 rgba(0, 0, 0, 0.2),
+    0 -0.2rem 0.2rem 0 rgba(0, 0, 0, 0.2);
+  z-index: 3;
+}
+
+.modal .header {
+  background-color: orange;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+
+.modal .header > *:first-child {
+  flex: 1;
+  text-align: center;
+  margin-left: 1rem;
+}
+.modal .header > *:last-child {
+  flex-basis: 1rem;
+  text-align: right;
+  margin-right: 1rem;
+}
+
+.modal > .header > button {
+  display: flex;
+  align-items: center;
+}
+
+.modal > .header .close {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.modal .body {
+  background-color: rgb(249, 249, 249);
+  position: relative;
+  height: 300px;
+  padding: 1.5rem 1rem;
+}
